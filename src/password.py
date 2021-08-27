@@ -1,14 +1,14 @@
 import string
 from random import *
 class Password:
-  
-  def __init__(self, len) -> None:
-      self.len = len
-  
   def generatePassword(self) -> str:
-    characters = string.ascii_letters + string.punctuation  + string.digits 
-    password = "".join(choice(characters) for x in range(self.len))
-    return password
+    len = int(input("Enter the length of the password: "))
+    if len < 8: 
+      return self.generatePassword()
+    else:
+      characters = string.ascii_letters + string.punctuation  + string.digits + '*-/+'
+      password = "".join(choice(characters) for x in range(len))
+      return password
 
-a = Password(5)
-a.hello()
+a = Password()
+print(a.generatePassword())
